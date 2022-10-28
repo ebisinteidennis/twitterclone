@@ -18,7 +18,7 @@ const displayContent  = (req, res) => {
     else if (url == "/settings")
     {    
         res.setHeader("Content-Type", "text/html");
-        res.write("<h1>Settings page</h1>");
+        res.write("<h1>Settings page<h1>);
         return res.end();
     } 
 
