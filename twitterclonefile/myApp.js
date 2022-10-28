@@ -4,9 +4,6 @@
 
 //new comment in nodejs
 const http = require("http");
-
-const server = http.createServer((req, res) => {
-    console.log("Joined");
-});
-
+const displayContent = require("./routes");
+const server = http.createServer(displayContent);
 server.listen(3001);
