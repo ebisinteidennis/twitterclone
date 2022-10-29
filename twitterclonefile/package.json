@@ -1,0 +1,16 @@
+{
+  "name": "twitterclonefile",
+  "version": "1.0.0",
+  "description": "twitter clone by ebisintei dennis",
+  "main": "myApp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node myApp.js"
+  },
+  "keywords": [
+    "twitter",
+    "clone"
+  ],
+  "author": "ebisintei dennis",
+  "license": "ISC"
+}
