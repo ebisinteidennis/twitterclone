@@ -4,6 +4,7 @@
 
 //new comment in nodejs
 //making use of npm package tool
+//npm command tool-This will install all the packages needed for the project: npm install
 var colors = require('colors');
 const http = require("http");
 const displayContent = require("./routes");
