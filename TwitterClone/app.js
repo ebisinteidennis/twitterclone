@@ -7,6 +7,9 @@ app.set("view engine", "pug");
 app.set("views", "views");//pug
 app.get("/",(req, res, next) =>
 {
-    res.status(200).render("home");
+    var payload = {
+        pageTitle: "Home"
+    }
+    res.status(200).render("home", payload);
 
 } )
