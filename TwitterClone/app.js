@@ -7,6 +7,6 @@ app.set("view engine", "pug");
 app.set("views", "views");//pug
 app.get("/",(req, res, next) =>
 {
-    res.status(200).send("yahoo!");
+    res.status(200).render("home");
 
 } )
