@@ -1,0 +1,10 @@
+extends layout\login-layout.pug
+
+block content 
+    .loginContainer
+        h1 Login
+        form(method="POST")
+            input(type="text", name="LogUsername", placeholder="username or email", required)
+            input(type="text", name="Password", placeholder="password", required)
+            input(type="Username", value="Login")
+        a(href="/register") Need an account? Register here.  
