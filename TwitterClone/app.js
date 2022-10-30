@@ -3,10 +3,12 @@ const app = express();
 const port = 3003;
 const server = app.listen(port, ()=> console.log("Server listening on port" + port));
 const middleware = require('./middleware')
+const path = require('path')
 
 app.set("view engine", "pug");
 app.set("views", "views");//pug
 
+app.use(express.static(path.join(__dirname, "public"))) //making use of express
 //Routes
 const loginRoute = require("./routes/loginRoutes");
 app.use("/login", loginRoute);
