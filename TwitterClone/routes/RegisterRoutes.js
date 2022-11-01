@@ -22,13 +22,14 @@ router.post("/",(req, res, next) =>
     var email = req.body.email.trim();
     var password = req.body.password;
     
-    var payload 
+    var payload = req.body;
 
     if(firstName && lasttName && email && password){
 
     }
     else {
-        res.status(200).render("register");
+        payload.console.errorMessage = "Make sure each field as a valid value";
+        res.status(200).render("register", payload);
     }
 
     
