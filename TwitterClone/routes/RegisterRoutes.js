@@ -14,7 +14,7 @@ router.get("/",(req, res, next) =>
 
 })
 
-router.post("/",(req, res, next) =>
+router.post("/", async (req, res, next) =>
 {   
     var firstName = req.body.firstName.trim();
     var lasttName = req.body.lastName.trim();
@@ -25,15 +25,14 @@ router.post("/",(req, res, next) =>
     var payload = req.body;
 
     if(firstName && lasttName && email && password){
-        User.findOne({
+        var User = await User.findOne({
             $or: [
                 {username: username},
                 {email: email},
             ]
         })
-        .then((user) => {
-            console.log(user);
-        })
+        console.log(User);
+        console.log("Hello");
     }
     else {
         payload.console.errorMessage = "Make sure each field as a valid value";
