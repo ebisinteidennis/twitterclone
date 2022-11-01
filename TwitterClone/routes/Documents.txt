@@ -4,3 +4,5 @@ password: kamkam123@G
 
 connection string: 
 mongodb+srv://adminTwitterClone:<password>@cluster0.fubznuo.mongodb.net/?retryWrites=true&w=majority
+
+"mongodb+srv://adminTwitterClone:kamkam123G@cluster0.fubznuo.mongodb.net/?retryWrites=true&w=majority"
