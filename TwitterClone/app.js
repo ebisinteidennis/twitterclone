@@ -6,12 +6,20 @@ const middleware = require('./middleware')
 const path = require('path')
 const bodyParser = require("body-parser")
 const mongoose = require("./database");
+const session = require("express-session");
 
 app.set("view engine", "pug");
 app.set("views", "views");//pug
-
+  
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, "public"))) //making use of express
+
+app.use(session({
+    secret: "bbq chips",
+    resave: true,
+    
+}))
+
 //Routes
 const loginRoute = require("./routes/loginRoutes");
 const RegisterRoute = require("./routes/registerRoutes");
