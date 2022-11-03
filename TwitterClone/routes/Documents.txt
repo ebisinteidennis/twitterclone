@@ -6,3 +6,6 @@ connection string:
 mongodb+srv://adminTwitterClone:<password>@cluster0.fubznuo.mongodb.net/?retryWrites=true&w=majority
 
 "mongodb+srv://adminTwitterClone:kamkam123G@cluster0.fubznuo.mongodb.net/?retryWrites=true&w=majority"
+
+section 5:
+In this session we will create the site main layout for the twiiterclone
