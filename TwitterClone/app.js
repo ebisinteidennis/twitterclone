@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, "public"))) //making use of express
 app.use(session({
     secret: "bbq chips",
     resave: true,
+    saveUninitialized: false
     
 }))
 
