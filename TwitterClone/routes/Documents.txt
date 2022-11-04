@@ -9,3 +9,7 @@ mongodb+srv://adminTwitterClone:<password>@cluster0.fubznuo.mongodb.net/?retryWr
 
 section 5:
 In this session we will create the site main layout for the twiiterclone
+
+SECTION 6: 
+in this section we will create the post form
+button for tweeting the post of every users.
