@@ -37,8 +37,6 @@ nav a:hover{
     border-radius: 50%;
 }
 
-
-
 nav a {
     padding:block;
     padding:10px;
@@ -47,6 +45,7 @@ nav a {
     display: flex;
     align-items: center;
     justify-content:center;
+    color: #212529;
 }
 
 .mainSectionContainer {
