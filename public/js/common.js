@@ -22,10 +22,15 @@ $("#submitPostButton").click(() => {
         content: textbox.val()
     }
 
-    $.post("/api/posts", data, (postData, status, xhr) => {
-        alert(postData);
+    $.post("/api/posts", data, postData => {
+        
+        var html = createPostHtml(postData);
+        $(".postsContainer").prepend(html);
+        textbox.val("");
+        button.prop("disabled", true);
     })
 })
 
-
-//bug 
+function createPostHtml(postData) {
+    return postData.content;
+}

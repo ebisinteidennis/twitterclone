@@ -16,3 +16,6 @@ button for tweeting the post of every users.
 
 BUG ALERT:
 1. profile picture for the website as a bug: It will not display.
+
+
+bug: common.js, 
