@@ -32,5 +32,12 @@ $("#submitPostButton").click(() => {
 })
 
 function createPostHtml(postData) {
-    return postData.content;
+    var postedBy = postData.postedBy
+    return `<div class='post'>
+            <div classs='mainContentContainer'>
+                <div class='userImageContainer'>
+                    <img src='${postedBy.profilePic}'>
+                </div>
+            </div>
+    </div>`
 }
