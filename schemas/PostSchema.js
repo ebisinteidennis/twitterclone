@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
     content: {type: String, trim: true},
-    postedby: {type: Schema.Types.ObjectId, ref: "User"},
+    postedBy: {type: Schema.Types.ObjectId, ref: "User"},
     pinned: Boolean
     
 },{timestamps: true} );
