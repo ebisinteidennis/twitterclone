@@ -12,7 +12,10 @@ router.get("/", (req, res, next) => {
 })
 
 router.post("/", async (req, res, next)=> {
-    res.status(200).send("It worked");
+    if (!req.body.content) {
+        console.log("Content param not sent with requests");
+        res.sendStatus(400);
+    }
 })
 
 module.exports = router;
