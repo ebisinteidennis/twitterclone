@@ -1,4 +1,4 @@
-$("c").keyup(event => {
+$("#postTextarea").keyup(event => {
     var textbox = $(event.target);
     var value = textbox.val().trim();
     
@@ -22,8 +22,10 @@ $("#submitPostButton").click(() => {
         content: textbox.val()
     }
 
-    $.post("/api/post", data, (postData, status, xhr) => {
-        ds
-
+    $.post("/api/posts", data, (postData, status, xhr) => {
+        alert(postData);
     })
 })
+
+
+//bug 
