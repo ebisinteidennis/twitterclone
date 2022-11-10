@@ -43,4 +43,9 @@ router.post("/", async (req, res, next) => {
     })
 })
 
+
+router.put("/", async (req, res, next) =>{
+    res.status(200).send("Yahoo")
+})
+
 module.exports = router;
