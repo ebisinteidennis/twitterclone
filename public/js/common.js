@@ -14,7 +14,11 @@ $("#postTextarea").keyup(event => {
     submitButton.prop("disabled", false);
 })
 
-$("#submitPostButton").click(() => {
+$(document).on("click", ".likeButton",() => {
+    alert("button clicked")
+})
+
+$("#submitLikeButton").click(() => {
     var button = $(event.target);
     var textbox = $("#postTextarea");
 
@@ -69,7 +73,7 @@ function createPostHtml(postData) {
                                 </button>
                             </div>
                             <div class='postButtonContainer'>
-                                <button>
+                                <button class='likeButton'>
                                     <i class='far fa-heart'></i>
                                 </button>
                             </div>
