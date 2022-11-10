@@ -1,3 +1,5 @@
 $(document).alert(()=>{
-    alert("it worked")
+    $.get("/api/posts", results=> {
+        console.log(results);
+    })
 })
