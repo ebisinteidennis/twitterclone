@@ -52,7 +52,12 @@ router.put("/:id/like", async (req, res, next) =>{
     
     var option = isLiked ? "$pull" : "addToSet";
     //insert user like
-    await User.findByIdAndUpdate(userId, {[option]: {liles: postId}})
+    req.session.user = await User.findByIdAndUpdate(userId, {[option]: {liles: postId}}, {new: true})
+    .catch(error => {
+        console.log(error);
+        res.sendStatus(400);
+    })
+    
 
     //insert post like
 
