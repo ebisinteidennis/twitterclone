@@ -74,6 +74,8 @@ function createPostHtml(postData) {
     var displayName = postedBy.firstName + " " + postedBy.lastName;
     var timestamp = timeDifference(new Date(), new Date(postData.createdAt));
 
+    //var likeButtonActiveClass = postData.liles.includes(userLoggedIn._id) ? "active" : "";
+
     return `<div class='post' data-id='${postData._id}'>
 
                 <div class='mainContentContainer'>
@@ -112,6 +114,7 @@ function createPostHtml(postData) {
             </div>`;
 }
 
+//${likeButtonActiveClass} likebutton 
 function timeDifference(current, previous) {
 
     var msPerMinute = 60 * 1000;
