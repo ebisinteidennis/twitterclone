@@ -19,3 +19,4 @@ BUG ALERT:
 
 
 bug: common.js, 
+bug in the retweeted message: the retweeted message is not showing

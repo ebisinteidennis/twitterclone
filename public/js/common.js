@@ -91,12 +91,12 @@ function getPostIdFromElement(element) {
 }
 
 function createPostHtml(postData) {
+
     if(postData == null) return alert("post object is null");
 
-    var isRetweet =postData.retweetData !== undefined;
+    var isRetweet = postData.retweetData !== undefined;
     var retweetedBy = isRetweet ? postData.postedBy.username : null;
     postData = isRetweet ? postData.retweetData : postData;
-    console.log(isRetweet);
     
     var postedBy = postData.postedBy;
 
@@ -110,8 +110,18 @@ function createPostHtml(postData) {
     var likeButtonActiveClass = postData.likes.includes(userLoggedIn._id) ? "active" : "";
     var retweetButtonActiveClass = postData.retweetUsers.includes(userLoggedIn._id) ? "active" : "";
 
-    return `<div class='post' data-id='${postData._id}'>
+    var retweetText = '';
+    if(isRetweet) {
+        retweetText = `<span>
+                        <i class='fas fa-retweet'></i>
+                        Retweeted by <a href='/profile/${retweetedBy}'>@${retweetedBy}</a>    
+                    </span>`
+    }
 
+    return `<div class='post' data-id='${postData._id}'>
+                <div class='postActionContainer'>
+                    ${retweetText}
+                </div>
                 <div class='mainContentContainer'>
                     <div class='userImageContainer'>
                         <img src='${postedBy.profilePic}'>
