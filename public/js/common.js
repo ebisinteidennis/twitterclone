@@ -41,19 +41,21 @@ $(document).on("click", ".likeButton", (event) => {
         url: `/api/posts/${postId}/like`,
         type: "PUT",
         success: (postData) => {
-            button.find("span").text(postData.likes.length || "");
             
+            button.find("span").text(postData.likes.length || "");
+
             if(postData.likes.includes(userLoggedIn._id)) {
                 button.addClass("active");
             }
-            else{button.removeClass("active");
+            else {
+                button.removeClass("active");
             }
+
         }
     })
 
 })
 
-//retweet
 $(document).on("click", ".retweetButton", (event) => {
     var button = $(event.target);
     var postId = getPostIdFromElement(button);
@@ -63,19 +65,20 @@ $(document).on("click", ".retweetButton", (event) => {
     $.ajax({
         url: `/api/posts/${postId}/retweet`,
         type: "POST",
-        success: (postData) => {
+        success: (postData) => {            
             button.find("span").text(postData.retweetUsers.length || "");
-            
+
             if(postData.retweetUsers.includes(userLoggedIn._id)) {
                 button.addClass("active");
             }
-            else{button.removeClass("active");
+            else {
+                button.removeClass("active");
             }
+
         }
     })
 
 })
-
 
 function getPostIdFromElement(element) {
     var isRoot = element.hasClass("post");
@@ -88,6 +91,12 @@ function getPostIdFromElement(element) {
 }
 
 function createPostHtml(postData) {
+    if(postData == null) return alert("post object is null");
+
+    var isRetweet =postData.retweetData !== undefined;
+    var retweetedBy = isRetweet ? postData.postedBy.username : null;
+    postData = isRetweet ? postData.retweetData : postData;
+    console.log(isRetweet);
     
     var postedBy = postData.postedBy;
 
@@ -98,7 +107,8 @@ function createPostHtml(postData) {
     var displayName = postedBy.firstName + " " + postedBy.lastName;
     var timestamp = timeDifference(new Date(), new Date(postData.createdAt));
 
-    //var likeButtonActiveClass = postData.liles.includes(userLoggedIn._id) ? "active" : "";
+    var likeButtonActiveClass = postData.likes.includes(userLoggedIn._id) ? "active" : "";
+    var retweetButtonActiveClass = postData.retweetUsers.includes(userLoggedIn._id) ? "active" : "";
 
     return `<div class='post' data-id='${postData._id}'>
 
@@ -122,13 +132,13 @@ function createPostHtml(postData) {
                                 </button>
                             </div>
                             <div class='postButtonContainer green'>
-                                <button class='retweetButton'>
+                                <button class='retweetButton ${retweetButtonActiveClass}'>
                                     <i class='fas fa-retweet'></i>
                                     <span>${postData.retweetUsers.length || ""}</span>
                                 </button>
                             </div>
                             <div class='postButtonContainer red'>
-                                <button class='likeButton'>
+                                <button class='likeButton ${likeButtonActiveClass}'>
                                     <i class='far fa-heart'></i>
                                     <span>${postData.likes.length || ""}</span>
                                 </button>
@@ -139,7 +149,6 @@ function createPostHtml(postData) {
             </div>`;
 }
 
-//${likeButtonActiveClass} likebutton 
 function timeDifference(current, previous) {
 
     var msPerMinute = 60 * 1000;
