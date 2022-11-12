@@ -69,4 +69,33 @@ router.put("/:id/like", async (req, res, next) => {
     res.status(200).send(post)
 })
 
+//retweet
+router.post("/:id/retweet", async (req, res, next) => {
+    return res.status(200).send("YEEHAA")
+
+    var postId = req.params.id;
+    var userId = req.session.user._id;
+
+    var isLiked = req.session.user.likes && req.session.user.likes.includes(postId);
+
+    var option = isLiked ? "$pull" : "$addToSet";
+
+    // Insert user like
+    req.session.user = await User.findByIdAndUpdate(userId, { [option]: { likes: postId } }, { new: true})
+    .catch(error => {
+        console.log(error);
+        res.sendStatus(400);
+    })
+
+    // Insert post like
+    var post = await Post.findByIdAndUpdate(postId, { [option]: { likes: userId } }, { new: true})
+    .catch(error => {
+        console.log(error);
+        res.sendStatus(400);
+    })
+
+
+    res.status(200).send(post)
+})
+
 module.exports = router;
