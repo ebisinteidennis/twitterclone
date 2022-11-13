@@ -5,11 +5,11 @@
     --lightGrey: rgb(230, 236, 240);
     --spacing: 15px;
     --greyText: rgb(101, 119, 134);
-    --greyButtonText:rbga(0,0,0,0.34);
-    --red:rgb(226, 34, 94);
+    --greyButtonText: rgba(0,0,0,0.34);
+    --red: rgb(226,34,94);
+    --redBackground: rgba(226,34,94,0.1);
     --green: rgb(23,191,99);
-    --greenBackground:rgba(23,191,99,0.1);
-    --redBackground:rgba(226, 34, 94,0.1);
+    --greenBackground: rgba(23,191,99,0.1);
 }
 
 * {
@@ -68,7 +68,8 @@ button {
 button i,
 button span {
     pointer-events: none;
-} 
+}
+
 .mainSectionContainer {
     padding:  0;
     border-left: 1px solid var(--lightGrey);
@@ -161,7 +162,7 @@ button span {
 
 .username,
 .date {
-    color: var(--greyText);
+    color: var(--greyText)
 }
 
 .displayName {
@@ -180,14 +181,13 @@ button span {
 
 .postFooter .postButtonContainer button {
     padding: 2px 5px;
-
 }
 
 .header a:hover {
-    text-decoration:underline;
+    text-decoration: underline;
 }
 
-.header a, 
+.header a,
 .header span {
     padding-right: 5px;
 }
@@ -204,7 +204,7 @@ button span {
 
 .postButtonContainer.red button:hover {
     color: var(--red);
-    background-color:var(--redBackground);
+    background-color: var(--redBackground)
 }
 
 .postButtonContainer.green button.active {
@@ -213,5 +213,12 @@ button span {
 
 .postButtonContainer.green button:hover {
     color: var(--green);
-    background-color:var(--greenBackground);
+    background-color: var(--greenBackground)
+}
+
+.postActionContainer {
+    padding-left: 35px;
+    font-size: 13px;
+    color: var(--greyText);
+    margin-bottom: 5px;
 }
