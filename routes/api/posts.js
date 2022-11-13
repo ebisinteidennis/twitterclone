@@ -12,12 +12,11 @@ router.get("/", (req, res, next) => {
     .populate("postedBy")
     .populate("retweetData")
     .sort({ "createdAt": -1 })
-    .then(async results =>{
-        results = await User.populate(results, {path: "retweetData.postedBy"});
+    .then(async results => {
+        results = await User.populate(results, { path: "retweetData.postedBy"});
         res.status(200).send(results);
     })
-    
-        .catch(error => {
+    .catch(error => {
         console.log(error);
         res.sendStatus(400);
     })
@@ -74,24 +73,23 @@ router.put("/:id/like", async (req, res, next) => {
     res.status(200).send(post)
 })
 
-//retweet
 router.post("/:id/retweet", async (req, res, next) => {
     var postId = req.params.id;
     var userId = req.session.user._id;
 
-   // try and delete retweet
-    var deletePost = await Post.findOneAndDelete({postedBy: userId, retweetData: postId})
-   .catch(error => {
-    console.log(error);
-    res.sendStatus(400);
+    // Try and delete retweet
+    var deletedPost = await Post.findOneAndDelete({ postedBy: userId, retweetData: postId })
+    .catch(error => {
+        console.log(error);
+        res.sendStatus(400);
     })
 
-    var option = deletePost  != null ? "$pull" : "$addToSet";
+    var option = deletedPost != null ? "$pull" : "$addToSet";
 
-    var repost = deletePost;
+    var repost = deletedPost;
 
     if (repost == null) {
-        repost = await Post.create({postedBY: userId, repostData: postId})
+        repost = await Post.create({ postedBy: userId, retweetData: postId })
         .catch(error => {
             console.log(error);
             res.sendStatus(400);
@@ -99,14 +97,14 @@ router.post("/:id/retweet", async (req, res, next) => {
     }
 
     // Insert user like
-    req.session.user = await User.findByIdAndUpdate(userId, { [option]: { retweets: repost._id} }, { new: true})
+    req.session.user = await User.findByIdAndUpdate(userId, { [option]: { retweets: repost._id } }, { new: true })
     .catch(error => {
         console.log(error);
         res.sendStatus(400);
     })
 
     // Insert post like
-    var post = await Post.findByIdAndUpdate(postId, { [option]: { retweetUsers: userId } }, { new: true})
+    var post = await Post.findByIdAndUpdate(postId, { [option]: { retweetUsers: userId } }, { new: true })
     .catch(error => {
         console.log(error);
         res.sendStatus(400);
