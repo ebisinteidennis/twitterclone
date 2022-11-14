@@ -34,7 +34,7 @@ $("#submitPostButton").click(() => {
     })
 })
 
-$("#replyMpdal").on("show.bs.modal", () =>{
+$("#replyMpdal").on("show.bs.modal", (event) =>{
     var button = $(event.target);
     var postId = getPostIdFromElement(button);
     
@@ -44,6 +44,9 @@ $("#replyMpdal").on("show.bs.modal", () =>{
 })
 
 
+$("#replyMpdal").on("hidden.bs.modal", (event) =>{
+    $("#originalPostContainer").html("");
+})
 
 $(document).on("click", ".likeButton", (event) => {
     var button = $(event.target);
