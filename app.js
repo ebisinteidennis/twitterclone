@@ -50,6 +50,6 @@ app.get("/",middleware.requireLogin,(req, res, next) =>
 //     res.join()
 // }) 
 
-app.use("/.netlify/functions/api", router);
+// app.use("/.netlify/functions/api", router);
 
-module.exports.handler = serverless(app);
+// module.exports.handler = serverless(app);

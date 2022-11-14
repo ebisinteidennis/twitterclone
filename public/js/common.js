@@ -37,13 +37,12 @@ $("#submitPostButton").click(() => {
 $("#replyMpdal").on("show.bs.modal", () =>{
     var button = $(event.target);
     var postId = getPostIdFromElement(button);
-    $(document).ready(() => {
-        $.get("/api/posts/" + postId, results => {
-            outputPosts(results, $(".postsContainer"));
-            console.log(results);
-        })
+    
+    $.get("/api/posts/" + postId, results => {
+        outputPosts(results, $("#originalPostContainer"));
     })
 })
+
 
 
 $(document).on("click", ".likeButton", (event) => {
@@ -208,5 +207,19 @@ function timeDifference(current, previous) {
 
     else {
         return Math.round(elapsed/msPerYear ) + ' years ago';   
+    }
+}
+
+function outputPosts(results, container) {
+    container.html("");
+    if(!Array.isArray(results))
+
+    results.forEach(result => {
+        var html = createPostHtml(result)
+        container.append(html);
+    });
+
+    if (results.length == 0) {
+        container.append("<span class='noResults'>Nothing to show.</span>")
     }
 }
