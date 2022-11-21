@@ -64,15 +64,20 @@ $("#deletePostModal").on("show.bs.modal", (event) => {
     $("#deletePostButton").data("id", postId);
 })
 
-$("#deletePostButton").click(() => {
-    var postid = (this).data("id");
+$("#deletePostButton").click((event) => {
+    var postId = $(event.target).data("id");
+
     $.ajax({
         url: `/api/posts/${postId}`,
         type: "DELETE",
-        success: (postData) => {
-            
-        location.reload();
+        success: (data, status, xhr) => {
 
+            if(xhr.status != 202) {
+                alert("could not delete post");
+                return;
+            }
+            
+            location.reload();
         }
     })
 })
