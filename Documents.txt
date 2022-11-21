@@ -20,3 +20,6 @@ BUG ALERT:
 
 bug: common.js, 
 bug in the retweeted message: the retweeted message is not showing
+
+Folder 13: profile page
+Bug fixed 2.0
