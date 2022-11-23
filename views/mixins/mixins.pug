@@ -31,15 +31,20 @@ mixin createDeletePostModal()
         .modal-dialog(role='document')
             .modal-content
                 .modal-header
-                    h5#deletePostModalLabel.modal-title Reply
+                    h5#deletePostModalLabel.modal-title Delete the post?
                     button.close(type='button', data-dismiss='modal', aria-label='Close')
                     span(aria-hidden='true') &times;
                 .modal-body
-                    p You won't able to delete this.
+                    p You won't be able to delete this.
                 .modal-footer
                     button.btn.btn-secondary(type='button', data-dismiss='modal') Close
                     button#deletePostButton.btn.btn-primary(type='button') Delete
-        
+
 mixin createPostModals(userLoggedIn)
     +createReplyModal(userLoggedIn)
     +createDeletePostModal()
+
+mixin createFollowButton(user, isFollowing)
+    - text = isFollowing ? "Following" : "Follow"
+    - buttonClass = isFollowing ? "followButton following" : "followButton"
+    button(class=buttonClass, data-user=user._id) #{text}
