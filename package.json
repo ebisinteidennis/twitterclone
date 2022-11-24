@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "build -s public"
   },
   "keywords": [
     "twitter",
@@ -20,6 +21,7 @@
     "express-session": "^1.17.3",
     "mongodb": "^4.11.0",
     "mongoose": "^6.7.0",
+    "netlify-lambda": "^2.0.15",
     "pug": "^3.0.2"
   }
 }
